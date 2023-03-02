@@ -1,5 +1,6 @@
 # MSFX
 Fork of [the MSFX Firefox userChrome](https://github.com/WinClassic/MSFX).
+
 ![Screenshot of MSFX](.assets/screenshot.png)
 
 ## Changes
