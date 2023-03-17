@@ -53,6 +53,7 @@
   --show-history-menu-item: none; /* none = hide | unset = show */
   --selected-tab-font-weight: 600 !important; /* 600 = bold | 500 = normal */
   --toolbar-tinting: luminosity !important; /* luminosity = tinted | normal = disabled */
+  --stop-reload-order: 1; /* 0 = stop first, 1 = reload first */
 }
 
 menupopup,
@@ -455,7 +456,7 @@ toolbarspring {
 }
 
 #stop-reload-button #stop-button {
-  -moz-box-ordinal-group: 0 !important;
+  -moz-box-ordinal-group: var(--stop-reload-order) !important;
 }
 
 #urlbar[breakout-extend] {
@@ -880,8 +881,124 @@ toolbar #new-tab-button.toolbarbutton-1 > .toolbarbutton-icon {
   padding: 0 !important;
   opacity: unset !important;
   width: 16px !important;
-  list-style-image: url("toolbar.png") !important;
   height: 16px !important;
+}
+
+#back-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/back.png") !important;
+}
+#forward-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/forward.png") !important;
+}
+#stop-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/stop.png") !important;
+}
+#reload-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/refresh.png") !important;
+}
+#home-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/home.png") !important;
+}
+#downloads-button > .toolbarbutton-icon,
+#downloads-button > .toolbarbutton-badge-stack,
+#downloads-button > .toolbarbutton-badge-stack > #downloads-indicator-anchor {
+  list-style-image: url("toolbar/downloads.png") !important;
+}
+#history-panelmenu > .toolbarbutton-icon {
+  list-style-image: url("toolbar/history.png") !important;
+}
+#library-button > .toolbarbutton-icon,
+#bookmarks-menu-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/bookmarks.png") !important;
+}
+#print-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/print.png") !important;
+}
+#new-window-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/new.png") !important;
+}
+#cut-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/cut.png") !important;
+}
+#copy-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/copy.png") !important;
+}
+#paste-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/paste.png") !important;
+}
+#fullscreen-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/fullscreen.png") !important;
+}
+#find-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/find.png") !important;
+}
+#email-link-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/email.png") !important;
+}
+#sidebar-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/sidebar.png") !important;
+}
+
+#back-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/back.png") !important;
+}
+#forward-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/forward.png") !important;
+}
+#stop-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/stop.png") !important;
+}
+#reload-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/refresh.png") !important;
+}
+#home-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/home.png") !important;
+}
+#downloads-button:hover > .toolbarbutton-icon,
+#downloads-button:hover > .toolbarbutton-badge-stack,
+#downloads-button:hover
+  > .toolbarbutton-badge-stack
+  > #downloads-indicator-anchor,
+#downloads-button[open] > .toolbarbutton-icon,
+#downloads-button[open] > .toolbarbutton-badge-stack,
+#downloads-button[open]
+  > .toolbarbutton-badge-stack
+  > #downloads-indicator-anchor {
+  list-style-image: url("toolbar/hover/downloads.png") !important;
+}
+#history-panelmenu:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/history.png") !important;
+}
+#library-button:hover > .toolbarbutton-icon,
+#bookmarks-menu-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/bookmarks.png") !important;
+}
+#print-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/print.png") !important;
+}
+#new-window-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/new.png") !important;
+}
+#cut-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/cut.png") !important;
+}
+#copy-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/copy.png") !important;
+}
+#paste-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/paste.png") !important;
+}
+#fullscreen-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/fullscreen.png") !important;
+}
+#find-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/find.png") !important;
+}
+#email-link-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/email.png") !important;
+}
+#sidebar-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/sidebar.png") !important;
 }
 
 #nav-bar
@@ -960,13 +1077,6 @@ toolbar
   -moz-context-properties: fill, fill-opacity;
 }
 
-#forward-button[disabled="true"],
-#forward-button:hover[disabled="true"],
-#back-button[disabled="true"],
-#back-button:hover[disabled="true"] {
-  -moz-image-region: unset !important;
-}
-
 #nav-bar #back-button[disabled="true"] > *,
 #nav-bar #forward-button[disabled="true"] {
   transform: none !important;
@@ -1033,129 +1143,6 @@ toolbar
 
 #history-panelmenu .toolbarbutton-text {
   display: var(--hide-history-button-text) !important;
-}
-
-#back-button {
-  -moz-image-region: rect(0px 16px 16px 0px) !important;
-}
-#back-button:hover {
-  -moz-image-region: rect(16px 16px 32px 0px) !important;
-}
-
-#forward-button {
-  -moz-image-region: rect(0px 32px 16px 16px) !important;
-}
-#forward-button:hover {
-  -moz-image-region: rect(16px 32px 32px 16px) !important;
-}
-
-#reload-button {
-  -moz-image-region: rect(0px 48px 16px 32px) !important;
-}
-#reload-button:hover {
-  -moz-image-region: rect(16px 48px 32px 32px) !important;
-}
-
-#stop-button {
-  -moz-image-region: rect(0px 64px 16px 48px) !important;
-}
-#stop-button:hover {
-  -moz-image-region: rect(16px 64px 32px 48px) !important;
-}
-
-#home-button {
-  -moz-image-region: rect(0px 80px 16px 64px) !important;
-}
-#home-button:hover {
-  -moz-image-region: rect(16px 80px 32px 64px) !important;
-}
-
-#find-button {
-  -moz-image-region: rect(0px 96px 16px 80px) !important;
-}
-#find-button:hover {
-  -moz-image-region: rect(16px 96px 32px 80px) !important;
-}
-
-#bookmarks-menu-button,
-#library-button {
-  -moz-image-region: rect(0px 112px 16px 96px) !important;
-}
-#bookmarks-menu-button:hover,
-#library-button:hover {
-  -moz-image-region: rect(16px 112px 32px 96px) !important;
-}
-
-#history-panelmenu {
-  -moz-image-region: rect(0px 128px 16px 112px) !important;
-}
-#history-panelmenu:hover {
-  -moz-image-region: rect(16px 128px 32px 112px) !important;
-}
-
-#downloads-button {
-  width: 24px !important;
-  -moz-image-region: rect(0px 208px 16px 192px) !important;
-}
-#downloads-button:hover {
-  width: 24px !important;
-  -moz-image-region: rect(16px 208px 32px 192px) !important;
-}
-
-#print-button {
-  -moz-image-region: rect(0px 144px 16px 128px) !important;
-}
-#print-button:hover {
-  -moz-image-region: rect(16px 144px 32px 128px) !important;
-}
-
-#email-link-button {
-  -moz-image-region: rect(0px 240px 16px 224px) !important;
-}
-#email-link-button:hover {
-  -moz-image-region: rect(16px 240px 32px 224px) !important;
-}
-
-#cut-button {
-  -moz-image-region: rect(0px 176px 16px 160px) !important;
-}
-#cut-button:hover {
-  -moz-image-region: rect(16px 176px 32px 160px) !important;
-}
-
-#copy-button {
-  -moz-image-region: rect(0px 160px 16px 144px) !important;
-}
-#copy-button:hover {
-  -moz-image-region: rect(16px 160px 32px 144px) !important;
-}
-
-#paste-button {
-  -moz-image-region: rect(0px 192px 16px 176px) !important;
-}
-#paste-button:hover {
-  -moz-image-region: rect(16px 192px 32px 176px) !important;
-}
-
-#sidebar-button {
-  -moz-image-region: rect(0px 224px 16px 208px) !important;
-}
-#sidebar-button:hover {
-  -moz-image-region: rect(16px 224px 32px 208px) !important;
-}
-
-#fullscreen-button {
-  -moz-image-region: rect(0px 256px 16px 240px) !important;
-}
-#fullscreen-button:hover {
-  -moz-image-region: rect(16px 256px 32px 240px) !important;
-}
-
-#new-window-button {
-  -moz-image-region: rect(0px 272px 16px 256px) !important;
-}
-#new-window-button:hover {
-  -moz-image-region: rect(16px 272px 32px 256px) !important;
 }
 
 #edit-controls {
@@ -1951,138 +1938,132 @@ toolbar .toolbarbutton-1 > .toolbarbutton-icon {
 :root[uidensity="touch"] #library-button > .toolbarbutton-icon {
   width: 20px !important;
   height: 20px !important;
-  list-style-image: url("toolbar_large.png") !important;
+}
+
+:root[uidensity="touch"] #back-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/back.png") !important;
+}
+:root[uidensity="touch"] #forward-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/forward.png") !important;
+}
+:root[uidensity="touch"] #stop-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/stop.png") !important;
+}
+:root[uidensity="touch"] #reload-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/refresh.png") !important;
+}
+:root[uidensity="touch"] #home-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/home.png") !important;
+}
+:root[uidensity="touch"] #downloads-button > .toolbarbutton-icon,
+:root[uidensity="touch"] #downloads-button > .toolbarbutton-badge-stack,
+:root[uidensity="touch"]
+  #downloads-button
+  > .toolbarbutton-badge-stack
+  > #downloads-indicator-anchor {
+  list-style-image: url("toolbar/downloads.png") !important;
+}
+:root[uidensity="touch"] #history-panelmenu > .toolbarbutton-icon {
+  list-style-image: url("toolbar/history.png") !important;
+}
+:root[uidensity="touch"] #library-button > .toolbarbutton-icon,
+:root[uidensity="touch"] #bookmarks-menu-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/bookmarks.png") !important;
+}
+:root[uidensity="touch"] #print-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/print.png") !important;
+}
+:root[uidensity="touch"] #new-window-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/new.png") !important;
+}
+:root[uidensity="touch"] #cut-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/cut.png") !important;
+}
+:root[uidensity="touch"] #copy-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/copy.png") !important;
+}
+:root[uidensity="touch"] #paste-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/paste.png") !important;
+}
+:root[uidensity="touch"] #fullscreen-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/fullscreen.png") !important;
+}
+:root[uidensity="touch"] #find-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/find.png") !important;
+}
+:root[uidensity="touch"] #email-link-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/email.png") !important;
+}
+:root[uidensity="touch"] #sidebar-button > .toolbarbutton-icon {
+  list-style-image: url("toolbar/sidebar.png") !important;
+}
+
+:root[uidensity="touch"] #back-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/back.png") !important;
+}
+:root[uidensity="touch"] #forward-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/forward.png") !important;
+}
+:root[uidensity="touch"] #stop-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/stop.png") !important;
+}
+:root[uidensity="touch"] #reload-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/refresh.png") !important;
+}
+:root[uidensity="touch"] #home-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/home.png") !important;
+}
+:root[uidensity="touch"] #downloads-button:hover > .toolbarbutton-icon,
+:root[uidensity="touch"] #downloads-button:hover > .toolbarbutton-badge-stack,
+:root[uidensity="touch"]
+  #downloads-button:hover
+  > .toolbarbutton-badge-stack
+  > #downloads-indicator-anchor,
+:root[uidensity="touch"] #downloads-button[open] > .toolbarbutton-icon,
+:root[uidensity="touch"] #downloads-button[open] > .toolbarbutton-badge-stack,
+:root[uidensity="touch"]
+  #downloads-button[open]
+  > .toolbarbutton-badge-stack
+  > #downloads-indicator-anchor {
+  list-style-image: url("toolbar/hover/downloads.png") !important;
+}
+:root[uidensity="touch"] #history-panelmenu:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/history.png") !important;
+}
+:root[uidensity="touch"] #library-button:hover > .toolbarbutton-icon,
+:root[uidensity="touch"] #bookmarks-menu-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/bookmarks.png") !important;
+}
+:root[uidensity="touch"] #print-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/print.png") !important;
+}
+:root[uidensity="touch"] #new-window-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/new.png") !important;
+}
+:root[uidensity="touch"] #cut-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/cut.png") !important;
+}
+:root[uidensity="touch"] #copy-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/copy.png") !important;
+}
+:root[uidensity="touch"] #paste-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/paste.png") !important;
+}
+:root[uidensity="touch"] #fullscreen-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/fullscreen.png") !important;
+}
+:root[uidensity="touch"] #find-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/find.png") !important;
+}
+:root[uidensity="touch"] #email-link-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/email.png") !important;
+}
+:root[uidensity="touch"] #sidebar-button:hover > .toolbarbutton-icon {
+  list-style-image: url("toolbar/hover/sidebar.png") !important;
 }
 
 :root[uidensity="touch"] #nav-bar {
   height: 28px;
-}
-
-:root[uidensity="touch"] #back-button {
-  -moz-image-region: rect(0px 20px 20px 0px) !important;
-}
-:root[uidensity="touch"] #back-button:hover {
-  -moz-image-region: rect(20px 20px 40px 0px) !important;
-}
-
-:root[uidensity="touch"] #forward-button {
-  -moz-image-region: rect(0px 40px 20px 20px) !important;
-}
-:root[uidensity="touch"] #forward-button:hover {
-  -moz-image-region: rect(20px 40px 40px 20px) !important;
-}
-
-:root[uidensity="touch"] #reload-button {
-  -moz-image-region: rect(0px 60px 20px 40px) !important;
-}
-:root[uidensity="touch"] #reload-button:hover {
-  -moz-image-region: rect(20px 60px 40px 40px) !important;
-}
-
-:root[uidensity="touch"] #stop-button {
-  -moz-image-region: rect(0px 80px 20px 60px) !important;
-}
-:root[uidensity="touch"] #stop-button:hover {
-  -moz-image-region: rect(20px 80px 40px 60px) !important;
-}
-
-:root[uidensity="touch"] #home-button {
-  -moz-image-region: rect(0px 100px 20px 80px) !important;
-}
-:root[uidensity="touch"] #home-button:hover {
-  -moz-image-region: rect(20px 100px 40px 80px) !important;
-}
-
-:root[uidensity="touch"] #find-button {
-  -moz-image-region: rect(0px 120px 20px 100px) !important;
-}
-:root[uidensity="touch"] #find-button:hover {
-  -moz-image-region: rect(20px 120px 40px 100px) !important;
-}
-
-:root[uidensity="touch"] #bookmarks-menu-button,
-:root[uidensity="touch"] #library-button {
-  -moz-image-region: rect(0px 140px 20px 120px) !important;
-}
-:root[uidensity="touch"] #bookmarks-menu-button:hover,
-:root[uidensity="touch"] #library-button:hover {
-  -moz-image-region: rect(20px 140px 40px 120px) !important;
-}
-
-:root[uidensity="touch"] #history-panelmenu {
-  -moz-image-region: rect(0px 160px 20px 140px) !important;
-}
-:root[uidensity="touch"] #history-panelmenu:hover {
-  -moz-image-region: rect(20px 160px 40px 140px) !important;
-}
-
-:root[uidensity="touch"] #downloads-button {
-  width: 28px !important;
-  -moz-image-region: rect(0px 260px 20px 240px) !important;
-}
-:root[uidensity="touch"] #downloads-button:hover {
-  width: 28px !important;
-  -moz-image-region: rect(20px 260px 40px 240px) !important;
-}
-
-:root[uidensity="touch"] #downloads-button .toolbarbutton-icon {
-  width: 20px !important;
-}
-
-:root[uidensity="touch"] #print-button {
-  -moz-image-region: rect(0px 180px 20px 160px) !important;
-}
-:root[uidensity="touch"] #print-button:hover {
-  -moz-image-region: rect(20px 180px 40px 160px) !important;
-}
-
-:root[uidensity="touch"] #email-link-button {
-  -moz-image-region: rect(0px 300px 20px 280px) !important;
-}
-:root[uidensity="touch"] #email-link-button:hover {
-  -moz-image-region: rect(20px 300px 40px 280px) !important;
-}
-
-:root[uidensity="touch"] #cut-button {
-  -moz-image-region: rect(0px 220px 20px 200px) !important;
-}
-:root[uidensity="touch"] #cut-button:hover {
-  -moz-image-region: rect(20px 220px 40px 200px) !important;
-}
-
-:root[uidensity="touch"] #copy-button {
-  -moz-image-region: rect(0px 200px 20px 180px) !important;
-}
-:root[uidensity="touch"] #copy-button:hover {
-  -moz-image-region: rect(20px 200px 40px 180px) !important;
-}
-
-:root[uidensity="touch"] #paste-button {
-  -moz-image-region: rect(0px 240px 20px 220px) !important;
-}
-:root[uidensity="touch"] #paste-button:hover {
-  -moz-image-region: rect(20px 240px 40px 220px) !important;
-}
-
-:root[uidensity="touch"] #sidebar-button {
-  -moz-image-region: rect(0px 280px 20px 260px) !important;
-}
-:root[uidensity="touch"] #sidebar-button:hover {
-  -moz-image-region: rect(20px 280px 40px 260px) !important;
-}
-
-:root[uidensity="touch"] #fullscreen-button {
-  -moz-image-region: rect(0px 320px 20px 300px) !important;
-}
-:root[uidensity="touch"] #fullscreen-button:hover {
-  -moz-image-region: rect(20px 320px 40px 300px) !important;
-}
-
-:root[uidensity="touch"] #new-window-button {
-  -moz-image-region: rect(0px 340px 20px 320px) !important;
-}
-:root[uidensity="touch"] #new-window-button:hover {
-  -moz-image-region: rect(20px 340px 40px 320px) !important;
 }
 
 :root[uidensity="touch"] #edit-controls .toolbarbutton-1 {
