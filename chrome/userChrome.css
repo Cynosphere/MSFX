@@ -2231,3 +2231,13 @@ toolbarbutton menupopup[placespopup] menuseparator {
 .menu-text {
   padding-inline-start: 18px !important;
 }
+
+.toolbarbutton-badge-stack .toolbarbutton-badge {
+  margin-inline-end: 0 !important;
+  margin: 0 !important;
+  min-width: unset !important;
+  align-self: end !important;
+  border-radius: 0 !important;
+  padding: 0 2px 0 !important;
+  box-shadow: none !important;
+}
