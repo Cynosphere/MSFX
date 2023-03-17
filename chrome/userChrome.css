@@ -1088,8 +1088,9 @@ toolbar
 }
 
 #forward-button[disabled="true"] .toolbarbutton-icon,
-#forward-button[disabled="true"]:active .toolbarbutton-icon {
-  transform: scaleX(-1);
+#forward-button[disabled="true"]:active .toolbarbutton-icon,
+#forward-button[disabled="true"] .toolbarbutton-icon:active {
+  transform: scaleX(-1) !important;
 }
 
 #nav-bar
