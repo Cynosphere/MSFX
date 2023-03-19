@@ -53,7 +53,7 @@
   --show-history-menu-item: none; /* none = hide | unset = show */
   --selected-tab-font-weight: 600 !important; /* 600 = bold | 500 = normal */
   --toolbar-tinting: luminosity !important; /* luminosity = tinted | normal = disabled */
-  --stop-reload-order: 1; /* 0 = stop first, 1 = reload first */
+  --stop-reload-order: 0; /* 0 = stop first, 1 = reload first */
 }
 
 menupopup,
@@ -369,7 +369,14 @@ toolbarspring {
 
 .tabbrowser-tab:not([pinned="true"]) .tab-icon-image {
   display: var(--show-tab-icons) !important;
-  margin-bottom: 1px !important;
+}
+
+.tabbrowser-tab .tab-icon-image {
+  margin-top: 1px !important;
+}
+
+.tabbrowser-tab[selected="true"]:not([pinned="true"]) .tab-icon-overlay {
+  margin-top: 1px !important;
 }
 
 .tabbrowser-tab[pinned="true"]
@@ -1570,6 +1577,11 @@ treechildren::-moz-tree-image(query, OrganizerQuery_history____v) {
 .bookmark-item > label::before,
 .bookmark-item .menu-iconic-icon {
   list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABgUExURYaGhv///5mZmVVVVf/78ABmzDMzMwAAgDNm//Hx8czMzHd3d2aZmZnMzDMzzGb//+rq6pmZZv//mQDM/+fn1v/MmcyZZjNmzF9fXwAzmcDAwABmmYCAADMzZgQEBAAAANSdJEsAAAAgdFJOU/////////////////////////////////////////8AXFwb7QAAAAlwSFlzAAAOwwAADsMBx2+oZAAAAIpJREFUKFNNjFsWgyAMREUIRGhTbOlLW7P/XRoD2t6Tj8w9k3TM3O3IzipMpbeHcEpvxOwCwDnrvVcRQHA4xD7ZTYTTmegCg8tRvnQcxqvU6QZDLnET6Y7bCUAuKtLjidKQg1Ibr/GNOE2Ec2t86EsoSG4/iJdlnjVXwZRMliDTBKd40IT9oeIP5hU1fA8vue4FsgAAAABJRU5ErkJggg==") !important;
+}
+
+.tab-icon-image:not([src]),
+.tab-icon-image:-moz-broken {
+  content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABgUExURYaGhv///5mZmVVVVf/78ABmzDMzMwAAgDNm//Hx8czMzHd3d2aZmZnMzDMzzGb//+rq6pmZZv//mQDM/+fn1v/MmcyZZjNmzF9fXwAzmcDAwABmmYCAADMzZgQEBAAAANSdJEsAAAAgdFJOU/////////////////////////////////////////8AXFwb7QAAAAlwSFlzAAAOwwAADsMBx2+oZAAAAIpJREFUKFNNjFsWgyAMREUIRGhTbOlLW7P/XRoD2t6Tj8w9k3TM3O3IzipMpbeHcEpvxOwCwDnrvVcRQHA4xD7ZTYTTmegCg8tRvnQcxqvU6QZDLnET6Y7bCUAuKtLjidKQg1Ibr/GNOE2Ec2t86EsoSG4/iJdlnjVXwZRMliDTBKd40IT9oeIP5hU1fA8vue4FsgAAAABJRU5ErkJggg==") !important;
 }
 
 .desktop-notification-icon {
