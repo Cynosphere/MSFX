@@ -2253,3 +2253,11 @@ toolbarbutton menupopup[placespopup] menuseparator {
   padding: 0 2px 0 !important;
   box-shadow: none !important;
 }
+
+/* ff 113 */
+#personal-bookmarks {
+  flex-grow: 0 !important;
+}
+#titlebar > #toolbar-menubar > spacer[style="order: 1000;"] {
+  display: none;
+}

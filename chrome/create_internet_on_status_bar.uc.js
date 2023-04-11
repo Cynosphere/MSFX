@@ -31,6 +31,7 @@ var IE6StatusBar = {
   width: 151px;
   height: 18px;
   box-shadow: inset -1px -1px 0 ThreeDHighlight, inset 1px 1px 0 ThreeDShadow;
+  justify-content: left !important;
 }
 
 #ie6_statusbar::before {
