@@ -53,7 +53,7 @@
   --show-history-menu-item: none; /* none = hide | unset = show */
   --selected-tab-font-weight: 600 !important; /* 600 = bold | 500 = normal */
   --toolbar-tinting: luminosity !important; /* luminosity = tinted | normal = disabled */
-  --stop-reload-order: 0; /* 0 = stop first, 1 = reload first */
+  --stop-reload-order: row-reverse; /* row-reverse = stop first, row = reload first */
 }
 
 menupopup,
@@ -458,12 +458,14 @@ toolbarspring {
 }*/
 
 #reload-button,
-#stop-button {
-  display: -moz-box !important;
+#stop-button,
+#reload-button:not([displaystop]) + #stop-button,
+#reload-button[displaystop] {
+  display: inherit !important;
 }
 
-#stop-reload-button #stop-button {
-  -moz-box-ordinal-group: var(--stop-reload-order) !important;
+#stop-reload-button {
+  flex-direction: var(--stop-reload-order) !important;
 }
 
 #urlbar[breakout-extend] {
@@ -2260,4 +2262,8 @@ toolbarbutton menupopup[placespopup] menuseparator {
 }
 #titlebar > #toolbar-menubar > spacer[style="order: 1000;"] {
   display: none;
+}
+
+#context-navigation > .menuitem-iconic {
+  justify-content: left !important;
 }
