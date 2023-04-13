@@ -1387,9 +1387,12 @@ hbox[anonid="findbar-textbox-wrapper"]::after {
   padding: 0 !important;
 }
 
-.browserContainer > findbar,
-.close-icon.findbar-closebutton {
-  -moz-box-ordinal-group: 0;
+.browserContainer {
+  flex-direction: column-reverse !important;
+}
+
+findbar {
+  flex-direction: row-reverse !important;
 }
 
 .close-icon.findbar-closebutton {
