@@ -12,95 +12,118 @@
 // [!] BUG: do not move main 'space'-item to palette or it will be hidden until customizing mode gets reopened
 
 // [!] Fix for WebExtensions with own windows by 黒仪大螃蟹 (for 1-N scripts)
+(function () {
+  Components.utils.import("resource:///modules/CustomizableUI.jsm");
+  var appversion = parseInt(Services.appinfo.version);
 
+  var AddSeparator = {
+    init: function () {
+      if (
+        appversion >= 76 &&
+        location != "chrome://browser/content/browser.xhtml"
+      )
+        return;
 
-Components.utils.import("resource:///modules/CustomizableUI.jsm");
-var {Services} = Components.utils.import("resource://gre/modules/Services.jsm", {});
-var appversion = parseInt(Services.appinfo.version);
+      try {
+        document
+          .getElementById("back-button")
+          .setAttribute("removable", "true");
+        document
+          .getElementById("forward-button")
+          .setAttribute("removable", "true");
+      } catch (e) {}
 
-var AddSeparator = {
-  init: function() {
+      /* blank tab workaround */
+      try {
+        if (gBrowser.selectedBrowser.getAttribute("blank"))
+          gBrowser.selectedBrowser.removeAttribute("blank");
+      } catch (e) {}
 
-	if (appversion >= 76 && location != 'chrome://browser/content/browser.xhtml')
-      return;
+      var tb_config_label = "Configuration Toolbar";
+      var tb_spacer_label = "Space";
+      var tb_sep_label = "Separator";
+      var tb_spring_label = "Flexible Space";
 
-	/* blank tab workaround */
-	try {
-	  if(gBrowser.selectedBrowser.getAttribute('blank')) gBrowser.selectedBrowser.removeAttribute('blank');
-	} catch(e) {}
-	  
-	var tb_config_label = "Configuration Toolbar";
-	var tb_spacer_label = "Space";
-	var tb_sep_label = "Separator";
-	var tb_spring_label = "Flexible Space";
-	  
-	try {
-	 if(document.getElementById('configuration_toolbar') == null) {
-		
-	  if(appversion <= 62) var tb_config = document.createElement("toolbar");
-	  else var tb_config = document.createXULElement("toolbar");
-	  tb_config.setAttribute("id","configuration_toolbar");
-	  tb_config.setAttribute("customizable","true");
-	  tb_config.setAttribute("class","toolbar-primary chromeclass-toolbar browser-toolbar customization-target");
-	  tb_config.setAttribute("mode","icons");
-	  tb_config.setAttribute("iconsize","small");
-	  tb_config.setAttribute("toolboxid","navigator-toolbox");
-	  tb_config.setAttribute("lockiconsize","true");
-	  tb_config.setAttribute("ordinal","1005");
-	  tb_config.setAttribute("defaultset","toolbarspacer,toolbarseparator");
-	  
-	  document.querySelector('#navigator-toolbox').appendChild(tb_config);
-	  
-	  CustomizableUI.registerArea("configuration_toolbar", {legacy: true});
-	  if(appversion >= 65) CustomizableUI.registerToolbarNode(tb_config);
-	  
-	  if(appversion <= 62) var tb_label = document.createElement("label");
-	  else var tb_label = document.createXULElement("label");
-	  tb_label.setAttribute("label", tb_config_label+": ");
-	  tb_label.setAttribute("value", tb_config_label+": ");
-	  tb_label.setAttribute("id","tb_config_tb_label");
-	  tb_label.setAttribute("removable","false");
-	  
-	  tb_config.appendChild(tb_label);
-	  
-	  
-	  if(appversion <= 62) var tb_spacer = document.createElement("toolbarspacer");
-	  else var tb_spacer = document.createXULElement("toolbarspacer");
-	  tb_spacer.setAttribute("id","spacer");
-	  tb_spacer.setAttribute("class","chromeclass-toolbar-additional");
-	  tb_spacer.setAttribute("customizableui-areatype","toolbar");
-	  tb_spacer.setAttribute("removable","false");
-	  tb_spacer.setAttribute("label", tb_spacer_label);
-	  
-	  tb_config.appendChild(tb_spacer);
-	
-	  
-	  if(appversion <= 62) var tb_sep = document.createElement("toolbarseparator");
-	  else var tb_sep = document.createXULElement("toolbarseparator");
-	  tb_sep.setAttribute("id","separator");
-	  tb_sep.setAttribute("class","chromeclass-toolbar-additional");
-	  tb_sep.setAttribute("customizableui-areatype","toolbar");
-	  tb_sep.setAttribute("removable","false");
-	  tb_sep.setAttribute("label", tb_sep_label);
- 	  
-	  tb_config.appendChild(tb_sep);
-	  
-	 
-	  if(appversion <= 62) var tb_spring = document.createElement("toolbarspring");
-	  else var tb_spring = document.createXULElement("toolbarspring");
-	  tb_spring.setAttribute("id","spring");
-	  tb_spring.setAttribute("class","chromeclass-toolbar-additional");
-	  tb_spring.setAttribute("customizableui-areatype","toolbar");
-	  tb_spring.setAttribute("removable","false");
-	  tb_spring.setAttribute("flex","1"); 
-	  tb_spring.setAttribute("label", tb_spring_label);
-	  	  
-	  tb_config.appendChild(tb_spring);
-	    
-	  // CSS
-	  var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"].getService(Components.interfaces.nsIStyleSheetService);
+      try {
+        if (document.getElementById("configuration_toolbar") == null) {
+          if (appversion <= 62)
+            var tb_config = document.createElement("toolbar");
+          else var tb_config = document.createXULElement("toolbar");
+          tb_config.setAttribute("id", "configuration_toolbar");
+          tb_config.setAttribute("customizable", "true");
+          tb_config.setAttribute(
+            "class",
+            "toolbar-primary chromeclass-toolbar browser-toolbar customization-target"
+          );
+          tb_config.setAttribute("mode", "icons");
+          tb_config.setAttribute("iconsize", "small");
+          tb_config.setAttribute("toolboxid", "navigator-toolbox");
+          tb_config.setAttribute("lockiconsize", "true");
+          tb_config.setAttribute("ordinal", "1005");
+          tb_config.setAttribute(
+            "defaultset",
+            "toolbarspacer,toolbarseparator"
+          );
 
-	  var uri = Services.io.newURI("data:text/css;charset=utf-8," + encodeURIComponent('\
+          document.querySelector("#navigator-toolbox").appendChild(tb_config);
+
+          CustomizableUI.registerArea("configuration_toolbar", {
+            legacy: true,
+          });
+          if (appversion >= 65) CustomizableUI.registerToolbarNode(tb_config);
+
+          if (appversion <= 62) var tb_label = document.createElement("label");
+          else var tb_label = document.createXULElement("label");
+          tb_label.setAttribute("label", tb_config_label + ": ");
+          tb_label.setAttribute("value", tb_config_label + ": ");
+          tb_label.setAttribute("id", "tb_config_tb_label");
+          tb_label.setAttribute("removable", "false");
+
+          tb_config.appendChild(tb_label);
+
+          if (appversion <= 62)
+            var tb_spacer = document.createElement("toolbarspacer");
+          else var tb_spacer = document.createXULElement("toolbarspacer");
+          tb_spacer.setAttribute("id", "spacer");
+          tb_spacer.setAttribute("class", "chromeclass-toolbar-additional");
+          tb_spacer.setAttribute("customizableui-areatype", "toolbar");
+          tb_spacer.setAttribute("removable", "false");
+          tb_spacer.setAttribute("label", tb_spacer_label);
+
+          tb_config.appendChild(tb_spacer);
+
+          if (appversion <= 62)
+            var tb_sep = document.createElement("toolbarseparator");
+          else var tb_sep = document.createXULElement("toolbarseparator");
+          tb_sep.setAttribute("id", "separator");
+          tb_sep.setAttribute("class", "chromeclass-toolbar-additional");
+          tb_sep.setAttribute("customizableui-areatype", "toolbar");
+          tb_sep.setAttribute("removable", "false");
+          tb_sep.setAttribute("label", tb_sep_label);
+
+          tb_config.appendChild(tb_sep);
+
+          if (appversion <= 62)
+            var tb_spring = document.createElement("toolbarspring");
+          else var tb_spring = document.createXULElement("toolbarspring");
+          tb_spring.setAttribute("id", "spring");
+          tb_spring.setAttribute("class", "chromeclass-toolbar-additional");
+          tb_spring.setAttribute("customizableui-areatype", "toolbar");
+          tb_spring.setAttribute("removable", "false");
+          tb_spring.setAttribute("flex", "1");
+          tb_spring.setAttribute("label", tb_spring_label);
+
+          tb_config.appendChild(tb_spring);
+
+          // CSS
+          var sss = Components.classes[
+            "@mozilla.org/content/style-sheet-service;1"
+          ].getService(Components.interfaces.nsIStyleSheetService);
+
+          var uri = Services.io.newURI(
+            "data:text/css;charset=utf-8," +
+              encodeURIComponent(
+                '\
 	  \
 		#configuration_toolbar { \
 	      -moz-appearance: none !important; \
@@ -161,21 +184,24 @@ var AddSeparator = {
 		  max-width: 100% !important; \
 		}\
 	  \
-	  '), null, null);
+	  '
+              ),
+            null,
+            null
+          );
 
-	  sss.loadAndRegisterSheet(uri, sss.AGENT_SHEET);
-	 }
-	} catch(e){}
+          sss.loadAndRegisterSheet(uri, sss.AGENT_SHEET);
+        }
+      } catch (e) {}
+    },
+  };
 
-  }
-
-}
-
-/* initialization delay workaround */
-document.addEventListener("DOMContentLoaded", AddSeparator.init(), false);
-/* Use the below code instead of the one above this line, if issues occur */
-/*
+  /* initialization delay workaround */
+  document.addEventListener("DOMContentLoaded", AddSeparator.init(), false);
+  /* Use the below code instead of the one above this line, if issues occur */
+  /*
 setTimeout(function(){
   AddSeparator.init();
 },2000);
 */
+})();

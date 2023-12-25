@@ -1,32 +1,32 @@
-Components.utils.import("resource:///modules/CustomizableUI.jsm");
-var { Services } = Components.utils.import(
-  "resource://gre/modules/Services.jsm",
-  {}
-);
-var sss = Components.classes[
-  "@mozilla.org/content/style-sheet-service;1"
-].getService(Components.interfaces.nsIStyleSheetService);
+(function () {
+  Components.utils.import("resource:///modules/CustomizableUI.jsm");
+  var Services =
+    globalThis.Services ||
+    ChromeUtils.import("resource://gre/modules/Services.jsm").Services;
+  var sss = Components.classes[
+    "@mozilla.org/content/style-sheet-service;1"
+  ].getService(Components.interfaces.nsIStyleSheetService);
 
-var IE6StatusBar = {
-  init: function () {
-    try {
-      // create a default toolbar button
-      CustomizableUI.createWidget({
-        id: "ie6_statusbar", // button id
-        defaultArea: CustomizableUI.AREA_NAVBAR,
-        removable: true,
-        label: "Internet", // button title
-        tooltiptext: "", // tooltip title
-        onCreated: function (button) {
-          return button;
-        },
-      });
+  var IE6StatusBar = {
+    init: function () {
+      try {
+        // create a default toolbar button
+        CustomizableUI.createWidget({
+          id: "ie6_statusbar", // button id
+          defaultArea: CustomizableUI.AREA_NAVBAR,
+          removable: true,
+          label: "Internet", // button title
+          tooltiptext: "", // tooltip title
+          onCreated: function (button) {
+            return button;
+          },
+        });
 
-      // style button icon / embedded non-animated icon, because there is no image for then inside Fx anymore
-      var uri = Services.io.newURI(
-        "data:text/css;charset=utf-8," +
-          encodeURIComponent(
-            `#ie6_statusbar {
+        // style button icon / embedded non-animated icon, because there is no image for then inside Fx anymore
+        var uri = Services.io.newURI(
+          "data:text/css;charset=utf-8," +
+            encodeURIComponent(
+              `#ie6_statusbar {
   display: flex;
   width: 151px;
   height: 18px;
@@ -51,20 +51,21 @@ var IE6StatusBar = {
 #ie6_statusbar > .toolbarbutton-icon {
   display: none;
 }`
-          ),
-        null,
-        null
-      );
+            ),
+          null,
+          null
+        );
 
-      // remove old style sheet, before registering the new one
-      if (sss.sheetRegistered(uri, sss.AGENT_SHEET)) {
-        sss.unregisterSheet(uri, sss.AGENT_SHEET);
+        // remove old style sheet, before registering the new one
+        if (sss.sheetRegistered(uri, sss.AGENT_SHEET)) {
+          sss.unregisterSheet(uri, sss.AGENT_SHEET);
+        }
+        sss.loadAndRegisterSheet(uri, sss.AGENT_SHEET);
+      } catch (e) {
+        Components.utils.reportError(e);
       }
-      sss.loadAndRegisterSheet(uri, sss.AGENT_SHEET);
-    } catch (e) {
-      Components.utils.reportError(e);
-    }
-  },
-};
+    },
+  };
 
-document.addEventListener("DOMContentLoaded", IE6StatusBar.init(), false);
+  document.addEventListener("DOMContentLoaded", IE6StatusBar.init(), false);
+})();
