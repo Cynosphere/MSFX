@@ -76,7 +76,7 @@ scrollbarbutton
   box-shadow: inset -1px -1px 0 ${colors.ThreeDDarkShadow}, inset 1px 1px 0 ${colors.ThreeDLightShadow}, inset -2px -2px 0 ${colors.ThreeDShadow}, inset 2px 2px 0 ${colors.ThreeDHighlight} !important;
 }
 
-scrollbarbutton:not(.disabled):hover:active
+scrollbarbutton:not([disabled="true"]):hover:active
 {
   background-color: ${colors.ThreeDFace} !important;
   border: 1px solid ${colors.ThreeDShadow} !important;
@@ -138,21 +138,21 @@ scrollbar[orient="vertical"] > scrollbarbutton[type="decrement"]
 scrollbarbutton[type="increment"][disabled="true"]
 {
   background-repeat: no-repeat !important;
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"><rect fill="${colors.ThreeDShadow}" width="1" height="7" y="4" x="5"/><rect width="1" height="2" fill="${colors.ThreeDHighlight}" x="6" y="10"/><rect width="1" height="2" fill="${colors.ThreeDHighlight}" x="7" y="9"/><rect width="1" height="2" fill="${colors.ThreeDHighlight}" x="8" y="8"/><rect width="1" fill="${colors.ThreeDHighlight}" height="1" y="8" x="9"/><rect fill="${colors.ThreeDShadow}" width="1" height="5" y="5" x="6"/><rect fill="${colors.ThreeDShadow}" width="1" height="3" y="6" x="7"/><rect fill="${colors.ThreeDShadow}" width="1" height="1" y="7" x="8"/></svg>');
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"><rect fill="${colors.ThreeDShadow}" width="1" height="7" y="4" x="5"/><rect width="1" height="2" fill="${colors.ThreeDHighlight}" x="6" y="10"/><rect width="1" height="2" fill="${colors.ThreeDHighlight}" x="7" y="9"/><rect width="1" height="2" fill="${colors.ThreeDHighlight}" x="8" y="8"/><rect width="1" fill="${colors.ThreeDHighlight}" height="1" y="8" x="9"/><rect fill="${colors.ThreeDShadow}" width="1" height="5" y="5" x="6"/><rect fill="${colors.ThreeDShadow}" width="1" height="3" y="6" x="7"/><rect fill="${colors.ThreeDShadow}" width="1" height="1" y="7" x="8"/></svg>') !important;
   background-position: center center !important;
 }
 
 scrollbar[orient="vertical"] > scrollbarbutton[type="increment"][disabled="true"]
 {
   background-repeat: no-repeat !important;
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="15" width="15" viewBox="0 0 15 15"><rect fill="${colors.ThreeDShadow}" height="1" width="7" x="3" y="5"/><rect fill="${colors.ThreeDHighlight}" height="1" width="2" y="6" x="9"/><rect fill="${colors.ThreeDHighlight}" height="1" width="2" y="7" x="8"/><rect fill="${colors.ThreeDHighlight}" height="1" width="2" x="7" y="8"/><rect fill="${colors.ThreeDHighlight}" height="1" width="1" x="7" y="9"/><rect fill="${colors.ThreeDShadow}" height="1" width="5" y="6" x="4"/><rect fill="${colors.ThreeDShadow}" height="1" width="3" x="5" y="7"/><rect fill="${colors.ThreeDShadow}" width="1" height="1" x="6" y="8"/></svg>');
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="15" width="15" viewBox="0 0 15 15"><rect fill="${colors.ThreeDShadow}" height="1" width="7" x="3" y="5"/><rect fill="${colors.ThreeDHighlight}" height="1" width="2" y="6" x="9"/><rect fill="${colors.ThreeDHighlight}" height="1" width="2" y="7" x="8"/><rect fill="${colors.ThreeDHighlight}" height="1" width="2" x="7" y="8"/><rect fill="${colors.ThreeDHighlight}" height="1" width="1" x="7" y="9"/><rect fill="${colors.ThreeDShadow}" height="1" width="5" y="6" x="4"/><rect fill="${colors.ThreeDShadow}" height="1" width="3" x="5" y="7"/><rect fill="${colors.ThreeDShadow}" width="1" height="1" x="6" y="8"/></svg>') !important;
   background-position: center center !important;
 }
 
 scrollbarbutton[type="decrement"][disabled="true"]
 {
   background-repeat: no-repeat !important;
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="15" width="15" viewBox="0 0 15 15"><rect fill="${colors.ThreeDShadow}" width="1" height="7" y="4" x="8"/><rect width="1" height="7" fill="${colors.ThreeDHighlight}" y="5" x="9"/><rect fill="${colors.ThreeDShadow}" width="1" height="5" y="5" x="7"/><rect fill="${colors.ThreeDShadow}" width="1" height="3" y="6" x="6"/><rect fill="${colors.ThreeDShadow}" width="1" height="1" y="7" x="5"/></svg>');
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="15" width="15" viewBox="0 0 15 15"><rect fill="${colors.ThreeDShadow}" width="1" height="7" y="4" x="8"/><rect width="1" height="7" fill="${colors.ThreeDHighlight}" y="5" x="9"/><rect fill="${colors.ThreeDShadow}" width="1" height="5" y="5" x="7"/><rect fill="${colors.ThreeDShadow}" width="1" height="3" y="6" x="6"/><rect fill="${colors.ThreeDShadow}" width="1" height="1" y="7" x="5"/></svg>') !important;
   background-position: center center !important;
 }
 

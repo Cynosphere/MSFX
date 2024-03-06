@@ -529,7 +529,11 @@ toolbarspring {
 .toolbarbutton-1:not(#activity_throbber):not(#ie6_statusbar):not(
     [disabled]
   ):active,
+.toolbarbutton-1:not(#activity_throbber):not(#ie6_statusbar):not(
+    [disabled]
+  ):hover:active,
 .toolbarbutton-1:not(#activity_throbber):not(#ie6_statusbar)[open="true"],
+.toolbarbutton-1:not(#activity_throbber):not(#ie6_statusbar)[open="true"]:hover,
 #PlacesChevron[open="true"],
 #PlacesChevron:active,
 #placesToolbar > toolbarbutton:not([disabled]):active,
@@ -1325,7 +1329,7 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
   height: 100% !important;
   padding: 6px !important;
   margin: 0 !important;
-  background-color: WindowText !important;
+  background-color: ButtonText !important;
   mask-repeat: no-repeat;
   mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAYAAAB4ka1VAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAoSURBVBhXYwCC/1AMA+h8MMCpiBFEQAFMAUwMWQNCBxSg8PFIMjAAAMnUEfGcoUqiAAAAAElFTkSuQmCC") !important;
 }
@@ -1347,6 +1351,7 @@ findbar {
   background-color: unset !important;
   padding: 0px 3px !important;
   height: 22px !important;
+  color: WindowText !important;
 }
 
 .findbar-find-previous,
@@ -1390,20 +1395,16 @@ hbox[anonid="findbar-textbox-wrapper"]::after {
 .findbar-find-previous .toolbarbutton-icon,
 .findbar-find-next .toolbarbutton-icon {
   list-style-image: none !important;
-  mask-repeat: no-repeat !important;
-  mask-position: center center !important;
-  background-color: WindowText !important;
+  background-color: transparent !important;
+  background-position: center;
   padding: 0 !important;
   min-width: 20px;
   min-height: 20px;
 }
 
-.findbar-find-next .toolbarbutton-icon {
-  mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAECAYAAABCxiV9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAkSURBVBhXY2RgYPgPxFgBSBIEsClghEmCALICZHE4QFLAwAAA+twEAr6ulF8AAAAASUVORK5CYII=") !important;
-}
-
-.findbar-find-previous .toolbarbutton-icon {
-  mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAECAYAAABCxiV9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAlSURBVBhXY0AD/6E0GDBCaRBAlgCLwyRRdEABI0gSmwQQMDAAAPqFBAIR7Pg5AAAAAElFTkSuQmCC") !important;
+.findbar-find-previous[disabled="true"] .toolbarbutton-icon,
+.findbar-find-next[disabled="true"] .toolbarbutton-icon {
+  opacity: 1 !important;
 }
 
 .findbar-container {
@@ -1442,8 +1443,8 @@ hbox[anonid="findbar-textbox-wrapper"]::after {
   margin: 0 !important;
   margin-inline-start: 4px !important;
   margin-inline-end: 4px !important;
-  background-color: WindowText !important;
-  fill: WindowText !important;
+  background-color: ButtonText !important;
+  fill: ButtonText !important;
   mask-repeat: no-repeat !important;
   mask-position: center center !important;
   mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAMAAADz0U65AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURQAAAAAAAKVnuc8AAAACdFJOU/8A5bcwSgAAAAlwSFlzAAAOwwAADsMBx2+oZAAAACRJREFUGFdjYGBgBAIgBWaBSTAbSEG5yAwQDVUBEQTRjIwMDAADqAAZRZMazAAAAABJRU5ErkJggg==") !important;
@@ -1651,6 +1652,7 @@ treechildren::-moz-tree-image(query, OrganizerQuery_history____v) {
 }
 
 .checkbox-check {
+  appearance: none !important;
   background-color: Window !important;
   border: 0 !important;
   border-radius: 0 !important;
@@ -1661,11 +1663,6 @@ treechildren::-moz-tree-image(query, OrganizerQuery_history____v) {
 .checkbox-check:not([native]) {
   width: 13px !important;
   height: 13px !important;
-}
-
-.checkbox-check[checked] {
-  color: WindowText !important;
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTMiIHZlcnNpb249IjEuMSIgZmlsbD0iY29udGV4dC1maWxsIiBmaWxsLW9wYWNpdHk9ImNvbnRleHQtZmlsbC1vcGFjaXR5IiB2aWV3Qm94PSIwIDAgMy40Mzk2IDMuNDM5NiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Zz48Zz48cmVjdCB4PSIuNzkzNzUiIHk9IjEuMzIyOSIgd2lkdGg9Ii4yNjQ1OCIgaGVpZ2h0PSIuNzkzNzUiLz48cmVjdCB4PSIyLjM4MTIiIHk9Ii43OTM3NSIgd2lkdGg9Ii4yNjQ1OCIgaGVpZ2h0PSIuNzkzNzUiLz48cmVjdCB4PSIyLjExNjciIHk9IjEuMDU4MyIgd2lkdGg9Ii4yNjQ1OCIgaGVpZ2h0PSIuNzkzNzUiLz48cmVjdCB4PSIxLjg1MjEiIHk9IjEuMzIyOSIgd2lkdGg9Ii4yNjQ1OCIgaGVpZ2h0PSIuNzkzNzUiLz48cmVjdCB4PSIxLjA1ODMiIHk9IjEuODUyMSIgd2lkdGg9Ii43OTM3NSIgaGVpZ2h0PSIuNTI5MTciLz48cmVjdCB4PSIxLjMyMjkiIHk9IjIuMzgxMiIgd2lkdGg9Ii4yNjQ1OCIgaGVpZ2h0PSIuMjY0NTgiLz48cmVjdCB4PSIxLjA1ODMiIHk9IjEuNTg3NSIgd2lkdGg9Ii4yNjQ1OCIgaGVpZ2h0PSIuMjY0NTgiLz48cmVjdCB4PSIxLjU4NzUiIHk9IjEuNTg3NSIgd2lkdGg9Ii4yNjQ1OCIgaGVpZ2h0PSIuMjY0NTgiLz48L2c+PC9nPjwvc3ZnPgo=") !important;
 }
 
 #urlbar-zoom-button {
@@ -1886,7 +1883,7 @@ richlistbox.theme-listbox:focus > richlistitem[current="true"] {
 
 #alltabs-button .toolbarbutton-icon {
   mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAdSURBVDhPYxiB4D8UwwA6Hy+gv2b6aRoFKICBAQA7tRPtf9lgfQAAAABJRU5ErkJgggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==") !important;
-  background-color: -moz-DialogText !important;
+  background-color: ButtonText !important;
   min-height: 0 !important;
   width: 14px !important;
   height: 14px !important;
