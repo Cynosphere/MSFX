@@ -1,6 +1,6 @@
 # MSFX
 
-Fork of [the MSFX Firefox userChrome](https://github.com/WinClassic/MSFX).
+Partially opinionated fork of [the MSFX Firefox userChrome](https://github.com/WinClassic/MSFX) for non-ESR versions.
 
 ![Screenshot of MSFX](.assets/screenshot.png)
 
@@ -21,11 +21,17 @@ Fork of [the MSFX Firefox userChrome](https://github.com/WinClassic/MSFX).
   - Properly styled address bar dropdown
   - Proper hover/active states for menu bar items
   - Scrollbar dithering
+  - Sidebar
+    - Correct close button positioning
+    - Support for "Move sidebar to right"
 - Internet status bar widget is its own component
   - Empty boxes have been removed in favor of putting extensions on the status bar
 - Address bar is no longer forced to the Address toolbar (configurable, enabled by default)
 - Works with Firefox 117+ (fixes developed for on 122.0b3)
   - A lot of legacy styling was removed to where the `appearance` property does nothing, everything that used this to achieve the classic style has been accurately recreated as best as possible.
+- Find bar text entry visibility fixes
+- Polyfill for missing legacy colors for scrollbars and grabber (125+)
+- Optional polyfill for missing legacy colors everywhere (useful for extensions, see `addons` folder) (125+)
 
 ## What's missing?
 
