@@ -136,6 +136,9 @@ menuseparator:not([hidden="true"])::before {
   box-shadow: inset 0px -1px 0 ThreeDHighlight, inset 0px 0px 0 ThreeDShadow !important;
   padding-bottom: 2px !important;
 }
+.browser-toolbar {
+  background-color: ThreeDFace !important;
+}
 
 #PersonalToolbar {
   padding-inline: 0 !important;
