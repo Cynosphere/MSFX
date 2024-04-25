@@ -90,7 +90,7 @@ slider[orient="vertical"]
   -moz-default-appearance: none;
   background-color: ${colors.ThreeDHighlight} !important;
   background-repeat: repeat !important;
-  background-image: url('data:image/svg+xml,<svg width="2" height="2" version="1.1" viewBox="0 0 .52917 .52917" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><g><g><rect x=".26458" y="0.0000" width=".26458" height=".26458" fill="${colors.ThreeDShadow}"/><rect x="0.0000" y=".26458" width=".26458" height=".26458" fill="${colors.ThreeDShadow}"/><rect x="0.0000" y="0.0000" width=".26458" height=".26458" fill="${colors.ThreeDHighlight}"/><rect x=".26458" y=".26458" width=".26458" height=".26458" fill="${colors.ThreeDHighlight}"/></g></g></svg>') !important;
+  background-image: url('data:image/svg+xml,<svg width="2" height="2" version="1.1" viewBox="0 0 .52917 .52917" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><g><g><rect x=".26458" y="0.0000" width=".26458" height=".26458" fill="${colors.ThreeDFace}"/><rect x="0.0000" y=".26458" width=".26458" height=".26458" fill="${colors.ThreeDFace}"/><rect x="0.0000" y="0.0000" width=".26458" height=".26458" fill="${colors.ThreeDHighlight}"/><rect x=".26458" y=".26458" width=".26458" height=".26458" fill="${colors.ThreeDHighlight}"/></g></g></svg>') !important;
 }
 
 scrollcorner

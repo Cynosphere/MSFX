@@ -6,8 +6,9 @@ panel {
   --panel-shadow-margin: 0 !important;
   --panel-border-radius: 0 !important;
   --panel-padding-block: 0 !important;
-  --panel-background: Window !important;
+  --panel-background: -moz-Dialog !important;
   --panel-color: -moz-DialogText !important;
+  --panel-border-color: transparent !important;
 }
 
 #urlbar-container {
@@ -17,11 +18,11 @@ panel {
 #urlbar {
   --urlbar-height: 22px !important;
   --urlbar-toolbar-height: 22px !important;
-  color: WindowText !important;
+  color: -moz-DialogText !important;
 }
 
 #urlbar-scheme {
-  color: WindowText !important;
+  color: -moz-DialogText !important;
 }
 
 /* Add 3D Borders back to context menus. */
@@ -185,7 +186,7 @@ menuseparator:not([hidden="true"])::before {
 }
 
 .tab-close-button:hover {
-  background-color: WindowText;
+  background-color: -moz-DialogText;
   opacity: 0.5 !important;
 }
 
@@ -1339,7 +1340,7 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
 
 findbar {
   background-color: ThreeDFace !important;
-  color: WindowText !important;
+  color: -moz-DialogText !important;
   transition: none !important;
   border-top: 0 !important;
   padding-block-start: 4px !important;
@@ -1354,7 +1355,7 @@ findbar {
   background-color: unset !important;
   padding: 0px 3px !important;
   height: 22px !important;
-  color: WindowText !important;
+  color: -moz-DialogText !important;
 }
 
 .findbar-find-previous,
@@ -1511,7 +1512,7 @@ treecolpicker {
 }
 
 #sidebar-close .toolbarbutton-icon {
-  background-color: WindowText !important;
+  background-color: -moz-DialogText !important;
   width: 8px !important;
   height: 7px !important;
   mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAHCAYAAAA1WQxeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA4SURBVBhXY2RgYPgPxCAAYiMDmDgYgDjIAnA+si4UHUCAbiIYoJtEvAnoOuF8kCqYBLqdQHEGBgAx7A/5GaSbcgAAAABJRU5ErkJggg==") !important;
@@ -1697,7 +1698,7 @@ treechildren::-moz-tree-image(query, OrganizerQuery_history____v) {
 
 .customizationmode-button {
   appearance: button !important;
-  color: WindowText !important;
+  color: -moz-DialogText !important;
   font-weight: 500 !important;
 }
 
